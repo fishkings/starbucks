@@ -69,6 +69,20 @@ new Swiper('.promotion .swiper-container', {
     } 
 });
 
+// AWARD SWIPER 생성
+new Swiper('.awards .swiper-container',{
+    direction : 'horizontal',
+    slidesPerView :  5,
+    autoplay : true,
+    loop : true,
+    spaceBetween : 30,
+    navigation : {
+        prevEl: '.awards .swiper-prev',
+        nextEl: '.awards .swiper-next'
+    }
+})
+
+
 
 const promotionEl = document.querySelector('.promotion') ;
 const promotionToggleBtn = document.querySelector('.toggle-promotion');
@@ -101,6 +115,18 @@ function floatingObject(selector,delay,size){
     })
 }
 
-floatingObject(".floating1",1,15)
-floatingObject(".floating2",.5,15)
-floatingObject(".floating3",1.5,20)
+floatingObject(".floating1",1,15);
+floatingObject(".floating2",.5,15);
+floatingObject(".floating3",1.5,20);
+
+
+const spyEls = document.querySelectorAll('section.scroll-spy');
+spyEls.forEach(function(spyEl){
+    new ScrollMagic
+    .Scene({
+        triggerElement:spyEl, // 보여짐 여부를 감시할 요소를 지정
+        triggerHook : .8
+    })
+    .setClassToggle(spyEl, 'show')
+    .addTo(new ScrollMagic.Controller());
+})
